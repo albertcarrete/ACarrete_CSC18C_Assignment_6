@@ -2,7 +2,7 @@ public class BinarySearchTreeDiscussion {
 
     public static void main(String[] args) {
 
-        BinaryTree myTree = new BinaryTree();
+        BinaryTree<Integer> myTree = new BinaryTree(Integer.class);
         
         // insert 8,12,6,5,9,13,11,10,7 into tree
         

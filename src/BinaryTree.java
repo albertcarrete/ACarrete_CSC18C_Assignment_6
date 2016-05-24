@@ -1,24 +1,28 @@
-public class BinaryTree {
+public class BinaryTree <T extends Comparable<T>> {
     
     private TreeNode root;
+    Class<T> clazz;
     
-    public BinaryTree()
+    
+    public BinaryTree(Class<T> clazz)
     {
+    	this.clazz = clazz;
         root = null;
     }
     
-    public void add(int data_item)
+    public void add(T data_item)
     {
         root = insertNode(data_item,root);
     }
     
-    private TreeNode insertNode(int item, TreeNode subRoot)
+    private TreeNode insertNode(T item, TreeNode subRoot)
     {
         if ( subRoot == null ) // tree is empty
         {
             return new TreeNode(item,null,null);
         }
-        else if ( item < subRoot.getData() ) // if item is less than subRoot's data item, traverse left
+        	// item < subRoot.getData
+        else if ( item.compareTo(subRoot.getData())<0 ) // if item is less than subRoot's data item, traverse left
         {
             subRoot.setLeftNode(insertNode(item,subRoot.getLeftNode()));
             return subRoot;
@@ -30,16 +34,16 @@ public class BinaryTree {
         }
     }
     
-    public boolean contains(int search_value)
+    public boolean contains(T search_value)
     {
         return checkInTree(search_value,root);
     }
     
-    private boolean checkInTree(int sv, TreeNode subRoot)
+    private boolean checkInTree(T sv, TreeNode subRoot)
     {
         if ( subRoot == null ) return false;
         else if ( subRoot.getData()==sv) return true;
-        else if ( sv < subRoot.getData() ) return checkInTree(sv, subRoot.getLeftNode());
+        else if ( sv.compareTo(subRoot.getData())<0 ) return checkInTree(sv, subRoot.getLeftNode());
         else return checkInTree(sv, subRoot.getRightNode());
     }
     
@@ -101,14 +105,16 @@ public class BinaryTree {
         System.out.print(currentNode.getData()+" ");        
     }
     
-    ////////////////////////////////////////////////////////////////////
+    /* Inner Class - TreeNode
+     * ============================================
+     */
     private class TreeNode
     {
-        private int data;
+        private T data;
         private TreeNode leftNode;
         private TreeNode rightNode;
         
-        public TreeNode(int newData, TreeNode left, TreeNode right)
+        public TreeNode(T newData, TreeNode left, TreeNode right)
         {
             this.data=newData;
             this.leftNode=left;
@@ -118,14 +124,14 @@ public class BinaryTree {
         /**
          * @return the data
          */
-        public int getData() {
+        public T getData() {
             return data;
         }
 
         /**
          * @param data the data to set
          */
-        public void setData(int data) {
+        public void setData(T data) {
             this.data = data;
         }
 
