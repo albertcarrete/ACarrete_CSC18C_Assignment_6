@@ -1,3 +1,9 @@
+/*
+ * 
+ * Task: take this Binary Search Tree class and implement it as a template class.
+ * 
+ * */
+
 public class BinaryTree <T extends Comparable<T>> {
     
     private TreeNode root;
