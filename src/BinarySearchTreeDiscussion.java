@@ -1,3 +1,13 @@
+/*
+ * Program: 	Assignment 6
+ * Class: 		CSC-18C
+ * Author: 		Albert Carrete
+ * Date: 		Tue, May 24, 2016
+ * ======================================================
+ * Take the original BinaryTree class and convert it into
+ * a template class. 
+ * 
+ * */
 public class BinarySearchTreeDiscussion {
 
     public static void main(String[] args) {
@@ -7,7 +17,8 @@ public class BinarySearchTreeDiscussion {
         BinaryTree<Integer> integerTree = new BinaryTree<Integer>(Integer.class);
         BinaryTree<Float> floatTree		= new BinaryTree<Float>(Float.class);
         BinaryTree<String> stringTree 	= new BinaryTree<String>(String.class);
-
+        
+        // Receive input for the binary tree type. 
         do{
         	
         	System.out.println("Select the type of value you will be");
@@ -29,38 +40,41 @@ public class BinarySearchTreeDiscussion {
         System.out.println("adding it to the tree, I'll do the pre-order, in-order, and post-order");
         System.out.println("traversals of what you have given me....");
         
+        
+        // Indefinite while loop to insert items
         while(true)
         {
+        	// Switch based on which type we selected in the previous Scanner
             switch(type){
-            case 1 :
-                System.out.print("Enter an integer: ");
-                int integerVal = new java.util.Scanner(System.in).nextInt();
-                integerTree.add(integerVal);
-                printTree(integerTree);
-                break;
-            case 2 :
-                System.out.print("Enter a float: ");
-                float floatVal = new java.util.Scanner(System.in).nextFloat();
-                floatTree.add(floatVal);    
-                printTree(floatTree);
-                break;
-            case 3 :
-                System.out.print("Enter a string: ");
-                String stringVal = new java.util.Scanner(System.in).next();
-                stringTree.add(stringVal); 
-                printTree(stringTree);
-                break;
+            
+	            case 1 :
+	                System.out.print("Enter an integer: ");
+	                int integerVal = new java.util.Scanner(System.in).nextInt();
+	                integerTree.add(integerVal);
+	                printTree(integerTree);
+	                break;
+	            case 2 :
+	                System.out.print("Enter a float: ");
+	                float floatVal = new java.util.Scanner(System.in).nextFloat();
+	                floatTree.add(floatVal);    
+	                printTree(floatTree);
+	                break;
+	            case 3 :
+	                System.out.print("Enter a string: ");
+	                String stringVal = new java.util.Scanner(System.in).next();
+	                stringTree.add(stringVal); 
+	                printTree(stringTree);
+	                break;
+                
             }
-//            System.out.print("pre-order traversal: ");
-//            myTree.preOrderTraversal();
-//            System.out.print("in-order traversal: ");
-//            myTree.inOrderTraversal();
-//            System.out.print("post-order traversal: ");
-//            myTree.postOrderTraversal();
         }
     }  
     
-    public static void printTree (BinaryTree tree){
+    /* Prints out the traverals for the inputted
+     * tree. TODO: make this a native method of
+     * BinaryTree */
+    @SuppressWarnings("rawtypes")
+	public static void printTree (BinaryTree tree){
         System.out.print("pre-order traversal: ");
         tree.preOrderTraversal();
         System.out.print("in-order traversal: ");

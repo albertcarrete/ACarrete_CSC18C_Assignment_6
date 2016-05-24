@@ -9,7 +9,6 @@ public class BinaryTree <T extends Comparable<T>> {
     private TreeNode root;
     Class<T> clazz;
     
-    
     public BinaryTree(Class<T> clazz)
     {
     	this.clazz = clazz;
